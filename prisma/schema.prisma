@@ -8,10 +8,11 @@ datasource db {
 }
 
 model Providers {
-  id    Int       @id @default(autoincrement())
-  email String    @unique
+  id    Int        @id @default(autoincrement())
+  name  String     
+  email String     @unique
   phone String
-  items Products?
+  items Products[]
 
   @@map("providers")
 }
@@ -20,8 +21,8 @@ model Products {
   id         Int       @id @default(autoincrement())
   tagName    String
   price      Decimal
-  product    Providers @relation(fields: [providerId], references: [id])
-  providerId Int       @unique
+  products   Providers @relation(fields: [providerId], references: [id])
+  providerId Int
 
   @@map("products")
 }

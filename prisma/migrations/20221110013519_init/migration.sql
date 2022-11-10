@@ -1,6 +1,7 @@
 -- CreateTable
 CREATE TABLE "providers" (
     "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
 
@@ -19,9 +20,6 @@ CREATE TABLE "products" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "providers_email_key" ON "providers"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "products_providerId_key" ON "products"("providerId");
 
 -- AddForeignKey
 ALTER TABLE "products" ADD CONSTRAINT "products_providerId_fkey" FOREIGN KEY ("providerId") REFERENCES "providers"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

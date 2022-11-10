@@ -9,7 +9,7 @@ const port = 5000;
 server.use(cors());
 
 server.use(express.static(path.join(__dirname, '../public')));
-server.use(express.urlencoded({ extended: true }));
+server.use(express.json());
 
 server.use(apiRoutes);
 
@@ -24,6 +24,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
     res.json({ error: 'Ocorreu algum erro.' });
 }
 server.use(errorHandler);
+
 
 
 //Localhost PORT settings
